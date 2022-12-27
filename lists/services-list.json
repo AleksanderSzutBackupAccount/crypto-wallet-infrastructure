@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Landing",
+    "url": "git@gitlab.com:croney.io/crypto-wallet/crypto-wallet-landing.git"
+  },
+  {
+    "name": "Wallet App",
+    "url": "git@gitlab.com:croney.io/crypto-wallet/crypto-wallet-frontend.git"
+  }
+]

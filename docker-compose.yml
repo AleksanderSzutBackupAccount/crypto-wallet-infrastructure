@@ -1,0 +1,27 @@
+version: '3'
+services:
+  reverse-proxy:
+    image: nginx:1.23
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - '80:80'
+      - '443:443'
+    networks:
+      - sail
+  wallet-landing:
+    build:
+      context: .
+  react-wallet:
+    build:
+      context: services
+      dockerfile: docker/dev/Dockerfile
+    container_name: react-wallet
+    volumes:
+      - .:/app
+      - /app/node_modules/
+    networks:
+      - sail
+networks:
+  sail:
+    driver: bridge
