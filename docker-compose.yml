@@ -3,23 +3,24 @@ services:
   reverse-proxy:
     image: nginx:1.23
     volumes:
-      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/dev/nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - '80:80'
       - '443:443'
     networks:
       - sail
-  wallet-landing:
-    build:
-      context: .
   react-wallet:
     build:
-      context: services
+      context: services/crypto-wallet-frontend
       dockerfile: docker/dev/Dockerfile
     container_name: react-wallet
+    stdin_open: true
     volumes:
-      - .:/app
+      - ./services/crypto-wallet-frontend:/app
       - /app/node_modules/
+    ports:
+      - '3000:3000'
+      - '3001:3001'
     networks:
       - sail
 networks:
