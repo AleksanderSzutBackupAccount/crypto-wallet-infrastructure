@@ -8,7 +8,14 @@ services:
       - '80:80'
       - '443:443'
     networks:
-      - sail
+      - frontend
+  react-landing:
+    image: nginx:1.23
+    volumes:
+      - ./services/crypto-wallet-landing:/app
+      - ./services/crypto-wallet-landing/docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - frontend
   react-wallet:
     build:
       context: services/crypto-wallet-frontend
@@ -18,11 +25,8 @@ services:
     volumes:
       - ./services/crypto-wallet-frontend:/app
       - /app/node_modules/
-    ports:
-      - '3000:3000'
-      - '3001:3001'
     networks:
-      - sail
+      - frontend
 networks:
-  sail:
+  frontend:
     driver: bridge
