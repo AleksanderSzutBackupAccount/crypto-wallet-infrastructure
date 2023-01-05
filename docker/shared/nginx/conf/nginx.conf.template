@@ -2,10 +2,10 @@ events {}
 http {
     server {
         listen 80;
-        server_name wallet.localhost;
+        server_name wallet.${DOMAIN_NAME};
 
         location / {
-            proxy_pass http://react-wallet:3000;
+            proxy_pass http://react-wallet;
             proxy_redirect off;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header HOST $http_host;
@@ -14,7 +14,7 @@ http {
     server {
         listen 80 default_server;
         listen [::]:80 default_server;
-        server_name localhost;
+        server_name ${DOMAIN_NAME};
 
         location / {
             proxy_pass http://react-landing;

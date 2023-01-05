@@ -1,6 +1,5 @@
 version: '3'
 services:
-
   load-balance:
     build:
       context: docker/shared/nginx
@@ -14,7 +13,7 @@ services:
   react-landing:
     build:
       context: services/crypto-wallet-landing
-      dockerfile: docker/dev/Dockerfile
+      dockerfile: docker/local/Dockerfile
     volumes:
       - ./services/crypto-wallet-landing:/app
     networks:
@@ -22,7 +21,7 @@ services:
   react-wallet:
     build:
       context: services/crypto-wallet-frontend
-      dockerfile: docker/dev/Dockerfile
+      dockerfile: docker/local/Dockerfile
     volumes:
       - ./services/crypto-wallet-frontend:/app
       - /app/node_modules/
