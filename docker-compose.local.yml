@@ -13,7 +13,7 @@ services:
   react-landing:
     build:
       context: services/crypto-wallet-landing
-      dockerfile: docker/local/Dockerfile
+      dockerfile: docker/dev/Dockerfile
     volumes:
       - ./services/crypto-wallet-landing:/app
     networks:
