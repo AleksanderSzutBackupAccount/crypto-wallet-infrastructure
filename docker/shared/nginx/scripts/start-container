@@ -2,4 +2,3 @@
 
 /scripts/init/pass-env-var-to-nginx.sh
 
-nginx -g 'daemon off;'

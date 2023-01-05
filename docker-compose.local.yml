@@ -5,8 +5,6 @@ services:
       context: docker/shared/nginx
     environment:
       DOMAIN_NAME: '${DOMAIN_NAME}'
-    volumes:
-      - ./docker/local/nginx/conf/nginx.conf.template:/etc/nginx/nginx.conf.template
     ports:
       - '80:80'
       - '443:443'

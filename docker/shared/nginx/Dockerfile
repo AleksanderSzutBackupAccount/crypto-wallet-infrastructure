@@ -10,4 +10,4 @@ RUN chmod -R +x /scripts
 
 COPY ./conf/nginx.conf.template /etc/nginx/nginx.conf.template
 
-ENTRYPOINT ["/scripts/start-container"]
+RUN ["/bin/sh" , "-c" , "envsubst '$DOMAIN_NAME'< /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf"]
