@@ -10,6 +10,7 @@ services:
       - '443:443'
     networks:
       - frontend
+    restart: always
   react-landing:
     build:
       context: services/crypto-wallet-landing
@@ -18,6 +19,7 @@ services:
       - ./services/crypto-wallet-landing:/app
     networks:
       - frontend
+    restart: always
   react-wallet:
     build:
       context: services/crypto-wallet-frontend
@@ -27,6 +29,7 @@ services:
       - /app/node_modules/
     networks:
       - frontend
+    restart: always
 networks:
   frontend:
     driver: bridge
